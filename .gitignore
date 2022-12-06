@@ -1,0 +1,16 @@
+##
+# Ignore everything
+##
+*
+
+##
+# But do not ignore
+##
+
+# This .gitignore file
+!.gitignore
+
+# .py files in the subdirectories
+!**/
+!**/*.py
+

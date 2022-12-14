@@ -24,9 +24,6 @@ for r in range(R):
 
 
 def bfs(starts: list[tuple[int, int]], part: int) -> int:
-    DIFFS = [(1, 0), (0, 1), (-1, 0), (0, -1)]
-    best = 100_000
-
     Q: deque[tuple[int, int, int]] = deque([])
     for (r, c) in starts:
         Q.append((r, c, 0))
@@ -39,12 +36,11 @@ def bfs(starts: list[tuple[int, int]], part: int) -> int:
         VIS.add((r, c))
         if (r, c) == (E_r, E_c):
             return dist
-        for (dr, dc) in DIFFS:
+        for (dr, dc) in [(1, 0), (0, 1), (-1, 0), (0, -1)]:
             rr, cc = r + dr, c + dc
             if 0 <= rr < R and 0 <= cc < C and ord(G[rr][cc]) <= ord(G[r][c]) + 1:
                 Q.append((rr, cc, dist + 1))
-
-    return best
+    return -1
 
 
 print(bfs([(S_r, S_c)], 1))
